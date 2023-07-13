@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ project_name }} | {{ 'global.home_label'|trans }}{% endblock %}</title>
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        {% block meta %}
+        {% endblock %}
+    </head>
+    <body
+            {{ stimulus_controller('symfony/ux-swup/swup', {
+                theme: 'slide',
+            }) }}
+    >
+        <div class="container-fluid">
+            {% block menu %}
+                {% include 'layouts/front--menu.html.twig' %}
+            {% endblock %}
+            <main id="swup">
+                {% block body %}
+                {% endblock %}
+            </main>
+        </div>
+        {% block javascripts_end %}
+        {% endblock %}
+    </body>
+</html>

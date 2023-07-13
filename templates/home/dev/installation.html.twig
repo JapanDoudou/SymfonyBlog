@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            {% apply markdown_to_html %}
+                {% include '/home/dev/README.md' %}
+            {% endapply %}
+        </div>
+    </div>
+
+{% endblock %}

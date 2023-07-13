@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% set tag = tag is defined and tag is not null ? tag.slug : null %}
+    {{ component('article_alone', {
+        id              : article.id,
+        slug            : article.slug,
+        title           : article.title,
+        content         : article.content,
+        createdAt       : article.createdAt,
+        tags            : article.tags,
+        auteur          : article.auteur,
+        comments        : article.comments,
+        tagSlug         : tag
+    }) }}
+{% endblock %}

@@ -1,0 +1,11 @@
+resources:
+  App\Entity\Article:
+    shortName: 'Article'
+    description: 'Article from the blog'
+    paginationItemsPerPage: 10
+    operations:
+      ApiPlatform\Metadata\GetCollection: ~ # nothing more to add if we want to keep the default controller
+      ApiPlatform\Metadata\Get:
+        provider: App\Api\ArticleVmProvider
+      ApiPlatform\Metadata\Post: ~
+      ApiPlatform\Metadata\Delete: ~

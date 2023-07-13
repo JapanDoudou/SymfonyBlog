@@ -1,0 +1,21 @@
+grumphp:
+    git_hook_variables:
+        EXEC_GRUMPHP_COMMAND: 'docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm php '
+    ignore_unstaged_changes: true # Grumphp ne se basera que sur les fichiers du commit
+    hide_circumvention_tip: false
+    process_timeout: 60 # Temps de processus maximum
+    ascii:
+        failed: bad.txt # Can be a list for more randomness
+        succeeded: good.txt
+    tasks:
+        shell:
+            scripts:
+                - [ "-c", "bin/local-php-security-checker_1.0.0_linux_amd64" ]
+                - [ "-c", "bin/console doctrine:schema:validate" ]
+                - [ "-c", "bin/phpunit" ]
+        git_commit_message:
+            allow_empty_message: false
+            max_subject_width: 72
+            matchers:
+                'Must contain technical or feature or bugfix (ex. feature: commit_message | technical: commit_message| bugfix: commit_message)': '/^((feat|fix|doc|test|refacto|perf|style|revert|ci|build)\: ).+/'
+            enforce_capitalized_subject: false

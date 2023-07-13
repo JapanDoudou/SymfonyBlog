@@ -1,0 +1,17 @@
+{% set articles = this.articles(app.request) %}
+{% for article in articles %}
+    <div class="articles--container">
+        {{ component('article', {
+            id              : article.id,
+            slug            : article.slug,
+            title           : article.title,
+            content         : article.content,
+            createdAt       : article.createdAt,
+            tags            : article.tags,
+            auteur          : article.auteur,
+            comments        : article.comments,
+            shortContent    : true
+        }) }}
+    </div>
+{% endfor %}
+{{ pagerfanta(articles) }}
